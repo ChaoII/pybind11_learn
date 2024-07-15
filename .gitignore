@@ -1,0 +1,7 @@
+.idea
+build
+dist
+.DS_Store
+.setuptools-cmake-build
+mylibrary.egg-info
+mylibrary/mylibrary_C.cpython-39-darwin.so

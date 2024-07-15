@@ -1,0 +1,52 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel",
+    "cmake>=3.16",
+    "setuptools-scm"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mylibrary"
+dynamic = ["version"]
+description = "test pybind11 package"
+readme = "README.md"
+authors = [
+    { name = "aichao", email = "849453582@qq.com" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+license = { text = "MIT" }
+requires-python = ">=3.8"
+dependencies = []
+
+# 命令行工具的重点，执行mylibrary其实是执行mylibrary.command的main方法
+[project.scripts]
+mylibrary = "mylibrary.command:main"
+
+[tool.setuptools.dynamic]
+version = { file = "VERSION_NUMBER" }
+
+#将mylibrary文件夹打包因此自己写编写的py文件和编译生成的so文件均需要放进mylibrary目录
+[tool.setuptools.packages.find]
+include = ["mylibrary*"]
+
+# 排除掉的数据将c++，一些不需要的文件排除
+[tool.setuptools.exclude-package-data]
+"*" = ["*.h", "*.cc", "*.bak", "*.in"]
+
+# 版本信息写入mylibrary/version.py
+[tool.setuptools_scm]
+write_to = "mylibrary/version.py"
+
+[tool.mypy]
+files = "setup.py"
+python_version = "3.8"
+strict = true
+show_error_codes = true
+enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
+warn_unreachable = true
