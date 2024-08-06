@@ -1,6 +1,6 @@
 recursive-include third_part *
 recursive-include src *
-recursive-include python *
+recursive-include mylibrary *
 
 include VERSION_NUMBER
 include CMakeLists.txt

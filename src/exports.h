@@ -33,6 +33,7 @@
 #  define WHEELBIND_DEPRECATED_NO_EXPORT WHEELBIND_NO_EXPORT WHEELBIND_DEPRECATED
 #endif
 
+/* NOLINTNEXTLINE(readability-avoid-unconditional-preprocessor-if) */
 #if 0 /* DEFINE_NO_DEPRECATED */
 #  ifndef WHEELBIND_NO_DEPRECATED
 #    define WHEELBIND_NO_DEPRECATED
